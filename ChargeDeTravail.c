@@ -10,11 +10,11 @@ int main(){
   float c=50;
 
   for(a=0;a<250000;a++){
-    c=b*b*cos(b);
+
+    c=c*c*cos(b);
     b=sin(b)*sqrt(b);
-    c=a;
   }
-  printf("fini %d ca",a);
+  printf("fini");
 
 
   return 0;
