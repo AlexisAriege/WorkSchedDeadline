@@ -6,3 +6,4 @@ echo" gcc -o -pthread Workload Travail.c -lm"
 gcc -o -pthread Workload Travail.c -lm
 echo "------- Lancement du programme -----------"
 #./Workload
+#sudo perf record -e syscalls:sys_exit_sched_yield,syscalls:sys_enter_sched_yield ./a.out
