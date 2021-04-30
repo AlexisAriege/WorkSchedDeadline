@@ -10,6 +10,10 @@
 #include <sys/syscall.h>
 #include <pthread.h>
 #include <math.h>
+
+//#include <sched.h>
+//à utiliser pour affecter un coeur en particulié.
+
 #define gettid() syscall(__NR_gettid)
 
 #define SCHED_DEADLINE	6
@@ -93,6 +97,7 @@ void *run_deadline(void *data)
 
  while (!done) {
    x++;
+   sched_yield();
  }
 
  printf("deadline thread dies [%ld]\n", gettid());
@@ -107,11 +112,10 @@ int main (int argc, char **argv)
 
  pthread_create(&thread, NULL, run_deadline, NULL);
 
- sleep(10);
+ sleep(90);
 
  done = 1;
  pthread_join(thread, NULL);
-
  printf("main dies [%ld]\n", gettid());
  return 0;
 }
