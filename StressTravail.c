@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
   }
   if(Flagduree > 0){
     if( sscanf(argv[Flagduree+1], "%d", &TempsDeStress) != 1) {
-        printf("\n Integer awaited after --duree \n");
+        printf("\n Integer awaited after --duree (en s) \n");
         exit(EXIT_FAILURE);
       }
   }
@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
     pthread_create(&tabThread[i],NULL,fonctionThread,&TabDeDonnee[i]);
   }
 
-  sleep(5);
+  sleep(TempsDeStress);
   done=1;
 
   for(i=0;i<Nombrethread;i++){
